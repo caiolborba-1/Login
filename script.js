@@ -3,22 +3,22 @@ document.getElementById("toggle").onclick = () => {
     cadastro = !cadastro;
     document.getElementById("titulo").innerText = cadastro ? "cadastro" : "Login";
     document.getElementById("button").innerText = cadastro ? "cadastrar" : "Entrar";
-    document.getElementById("toggle").innerText = cadastro 
+    document.getElementById("toggle").innerText = cadastro
         ? "Já tem conta? Faça Login!"
         : "Não tem conta? Cadastre-se!";
-        document.getElementById("mensagem").innerHTML + "";
+    document.getElementById("mensagem").innerHTML + "";
 }
 
-document. getElementById ("form-login").onsubmit = (e) => {
+document.getElementById("form-login").onsubmit = (e) => {
     e.preventDefault();
 
-    let email =  document.getElementById("email").value;
-    let senha =  document.getElementById("senha").value;
-    let mensagem =  document.getElementById("mensagem");
+    let email = document.getElementById("email").value;
+    let senha = document.getElementById("senha").value;
+    let mensagem = document.getElementById("mensagem");
 
-    mensegem.innerHTML = "";
+    mensagem.innerHTML = "";
 
-    if (!email.includes(@) || !email.includes(".")) {
+    if (!email.includes("@") || !email.includes(".")) {
         mensegem.innerHTML = "<div class='erro'><p> Email Invalido!</p></div>";
         return;
     }
