@@ -1,13 +1,16 @@
 let cadastro = false;
-document.getElementById("toggle").onclick = () => {
+
+document.getElementById("toggle").onclick = (e) => {
     cadastro = !cadastro;
-    document.getElementById("titulo").innerText = cadastro ? "cadastro" : "Login";
-    document.getElementById("button").innerText = cadastro ? "cadastrar" : "Entrar";
+
+    document.getElementById("titulo").innerText = cadastro ? "Cadastro" : "Login";
+    document.getElementById("button").innerText = cadastro ? "Cadastrar" : "Entrar";
     document.getElementById("toggle").innerText = cadastro
         ? "Já tem conta? Faça Login!"
         : "Não tem conta? Cadastre-se!";
-    document.getElementById("mensagem").innerHTML + "";
-}
+
+    document.getElementById("mensagem").innerHTML = "";
+};
 
 document.getElementById("form-login").onsubmit = (e) => {
     e.preventDefault();
@@ -19,24 +22,27 @@ document.getElementById("form-login").onsubmit = (e) => {
     mensagem.innerHTML = "";
 
     if (!email.includes("@") || !email.includes(".")) {
-        mensegem.innerHTML = "<div class='erro'><p> Email Invalido!</p></div>";
+        mensagem.innerHTML = "<div class='erro'>Email inválido!</div>";
         return;
     }
 
     if (senha.length < 4) {
-        mensagem.innerHTML = "<div class='erro'><p> Senha muito curta!</p></div>";
+        mensagem.innerHTML = "<div class='erro'>Senha muito curta!</div>";
         return;
     }
 
     if (cadastro) {
         localStorage.setItem(email, senha);
-        mensagem.innerHTML = "<div class='erro'><p> Cadastrado com sucesso!</p></div>";
+        mensagem.innerHTML = "<div class='sucesso'>Cadastrado com sucesso!</div>";
     } else {
         let salva = localStorage.getItem(email);
-        if (salvar === senha) {
-            mensagem.innerHTML = "<div class='erro'><p> Logado com sucesso!</p></div>";
+
+        if (salva === senha) {
+            mensagem.innerHTML = "<div class='sucesso'>Logado com sucesso!</div>";
         } else {
-            mensagem.innerHTML = "<div class='erro'><p> Dados incorretos!</p></div>";
+            mensagem.innerHTML = "<div class='erro'>Dados incorretos!</div>";
         }
-    } document.getElementById("form-login").reset();
-}
+    }
+
+    document.getElementById("form-login").reset();
+};
